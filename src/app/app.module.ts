@@ -10,6 +10,7 @@ import { SearchBarComponent } from './cmp/search-bar/search-bar.component';
 import { LocationsComponent } from './views/locations/locations.component';
 import { LocationDataComponent } from './cmp/location-data/location-data.component';
 import { SettingsComponent } from './views/settings/settings.component';
+import { NonexistantComponent } from './views/nonexistant/nonexistant.component';
 
 @NgModule({
 	declarations: [
@@ -20,6 +21,7 @@ import { SettingsComponent } from './views/settings/settings.component';
 		LocationsComponent,
 		LocationDataComponent,
   SettingsComponent,
+  NonexistantComponent,
 	],
 	imports: [
 		BrowserModule,
