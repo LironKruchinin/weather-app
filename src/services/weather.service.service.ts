@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-
+import data from './data.json';
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
-export class WeatherServiceService {
+export class WeatherService {
 
-  constructor() { }
+	constructor() {
+	}
+
+	getWeather() {
+		return data
+	}
 }

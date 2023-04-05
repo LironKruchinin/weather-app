@@ -1,1 +1,11 @@
-<p>location-data works!</p>
+<section class="area">
+	<div>
+		{{location.location.name}}
+		{{location.current.condition.text}}
+	</div>
+	<div>
+		{{dateConverter(location.location.localtime_epoch)}}
+		{{location.current.temp_c}}&#8451;
+	</div>
+</section>
+<!-- {{location | json}} -->

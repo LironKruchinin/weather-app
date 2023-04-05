@@ -1,2 +1,3 @@
-<p>locations works!</p>
-<location-data></location-data>
+<div *ngFor="let location of locations">
+	<location-data [location]="location"></location-data>
+</div>
