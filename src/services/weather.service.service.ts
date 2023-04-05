@@ -4,8 +4,12 @@ import data from './data.json';
 	providedIn: 'root'
 })
 export class WeatherService {
+	constructor() { }
 
-	constructor() {
+	public isMetric: string = 'true'
+	changeMeasurement() {
+		this.isMetric ? console.log(this.isMetric) : console.log(this.isMetric)
+		return ''
 	}
 
 	getWeather() {

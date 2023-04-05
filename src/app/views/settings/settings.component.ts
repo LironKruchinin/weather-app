@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
-import { } from '../../../services/weather.service.service'
+import { WeatherService } from '../../../services/weather.service.service'
 @Component({
 	selector: 'settings',
 	templateUrl: './settings.component.html',
-	styleUrls: ['./settings.component.scss']
+	styleUrls: ['./settings.component.scss'],
+	providers: [WeatherService]
 })
 export class SettingsComponent {
-	isMetric: boolean = true
+	constructor(private weatherService: WeatherService) { }
 
-	changeMeasurement() {
-		// console.log(this.isMetric);
+	isMetric = this.weatherService.isMetric
 
+	isClicked() {
+		this.weatherService.isMetric = this.isMetric
+		this.weatherService.changeMeasurement()
 	}
+
 }
