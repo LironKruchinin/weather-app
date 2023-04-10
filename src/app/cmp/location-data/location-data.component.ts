@@ -11,9 +11,26 @@ export class LocationDataComponent {
 	@Input() location: any | undefined
 
 	isMetric = localStorage.getItem(this.weatherService.KEY)
-	dateConverter(timeStamp: number) {
-		const date = new Date(timeStamp)
-		return date.getHours() + ':' + date.getMinutes()
+	timeConverter(timeStamp: string) {
+		const data = timeStamp.split(' ')
+		console.log(data[1].slice(0, 2))
+
+		if (!localStorage.getItem(this.weatherService.KEY)) {
+			console.log(this.weatherService.isMetric);
+
+			let hours: number | string = +data[1].slice(0, 2)
+
+			if (hours > 12) {
+				hours = hours - 12
+				return hours + data[1].slice(2) + ' PM'
+			} else {
+				return hours + data[1].slice(2) + ' AM'
+			}
+		} else {
+			return data[1]
+
+		}
+
 	}
 
 	convertToF(temp: number) {

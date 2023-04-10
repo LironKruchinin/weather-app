@@ -1,3 +1,11 @@
-<div *ngFor="let location of locations">
-	<location-data [location]="location"></location-data>
-</div>
+<section>
+	<location-data [location]="weatherService.searchData"></location-data>
+	<!-- {{searchData}} -->
+	<!-- <location-data [location]="searchedData"></location-data> -->
+</section>
+
+<section *ngIf="!weatherService.loadingData">
+	<div *ngFor="let location of locations">
+		<location-data [location]="location"></location-data>
+	</div>
+</section>
