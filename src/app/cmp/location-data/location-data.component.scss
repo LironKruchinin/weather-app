@@ -2,12 +2,31 @@
 
 :host {
 	.area {
-		background-color: rgb(255, 51, 0);
+
+		&.cloudy {
+			background-image: url(https://e0.pxfuel.com/wallpapers/244/316/desktop-wallpaper-dark-cloudy-sky-and-background-dark-stormy-sky-thumbnail.jpg);
+		}
+
+		&.rain {
+			background-image: url(https://www.presentationpoint.com/wp-content/uploads/2019/02/dphdwep.gif);
+		}
+
+		&.clear {
+			background-image: url(https://c1.wallpaperflare.com/preview/232/993/172/sky-blue-nature-weather.jpg);
+		}
+
+		// background-color: rgb(255, 51, 0);
 		display: flex;
 		flex-direction: column;
 		margin: 10px 0;
 		padding: 10px;
 		border-radius: 15px;
+		color: $clr1;
+		background-image: url(https://c1.wallpaperflare.com/preview/232/993/172/sky-blue-nature-weather.jpg);
+		// background-image: url(https://www.presentationpoint.com/wp-content/uploads/2019/02/dphdwep.gif);
+		// background-image: url(https://e0.pxfuel.com/wallpapers/244/316/desktop-wallpaper-dark-cloudy-sky-and-background-dark-stormy-sky-thumbnail.jpg);
+		// background-repeat: round;
+		width: 100%;
 
 		.time {
 			margin: 1px -2px;

@@ -1,4 +1,4 @@
-<section class="area">
+<section [class]="location.current.condition.text" class="area">
 	<div>
 		<section>
 			{{location.location.name}}
@@ -9,7 +9,6 @@
 			<span *ngIf="!isMetric">&#8457;</span>
 		</section>
 	</div>
-
 	<div>
 		<section class="">{{location.current.condition.text}}</section>
 	</div>

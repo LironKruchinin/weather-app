@@ -17,13 +17,8 @@ export class HomePageComponent {
 	isMetric: string | boolean | null = 'true'
 
 	ngOnInit() {
-		console.log(this.weatherService.getWeather())
 		this.testLocation = this.weatherService.getWeather()
 		this.isMetric = localStorage.getItem(this.weatherService.KEY)
-		console.log('homepageCMP', this.isMetric);
 	}
-	// logFunc(location: string) {
-	// 	console.log(location)
 
-	// }
 }
