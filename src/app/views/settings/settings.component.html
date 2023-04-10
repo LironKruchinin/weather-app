@@ -3,14 +3,17 @@
 	<div>Example:
 		<span *ngIf="isMetric">20&#8451;</span>
 		<span *ngIf="!isMetric">68&#8457;</span>
-		<!-- {{isMetric ? ('20&#8451;') : ('68&#8457;')}} -->
 	</div>
+
 	<label for="weather">
 		<input type="radio" name="degree" id="weather" value="true" [(ngModel)]="isMetric">
 		Celsius
 	</label>
+
 	<label for="weather1">
 		<input type="radio" name="degree" id="weather1" value="" [(ngModel)]="isMetric">
-		Fahrenheit </label>
+		Fahrenheit
+	</label>
+
 	<button (click)="isClicked()">Save</button>
 </section>

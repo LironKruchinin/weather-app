@@ -1,11 +1,15 @@
 <section class="area">
 	<div>
-		{{location.location.name}}
-		{{location.current.condition.text}}
+		<section>
+			{{location.location.name}}
+			<section class="time">{{dateConverter(location.location.localtime_epoch)}}</section>
+		</section>
+
+		<section>{{convertToF(location.current.temp_c)}}<span *ngIf="isMetric">&#8451;</span></section>
 	</div>
+
 	<div>
-		{{dateConverter(location.location.localtime_epoch)}}
-		{{location.current.temp_c}}&#8451;
+		<section class="">{{location.current.condition.text}}</section>
 	</div>
+
 </section>
-<!-- {{location | json}} -->

@@ -12,8 +12,7 @@ export class SettingsComponent {
 	isMetric = this.weatherService.isMetric
 
 	isClicked() {
-		this.weatherService.isMetric = this.isMetric
-		this.weatherService.changeMeasurement()
+		this.weatherService.changeMeasurement(this.isMetric)
 	}
 
 }

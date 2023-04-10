@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+
+import { WeatherService } from '../services/weather.service.service'
+
 import { AppComponent } from './app-root/app.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { HeaderComponent } from './cmp/header/header.component';
@@ -20,15 +22,15 @@ import { NonexistantComponent } from './views/nonexistant/nonexistant.component'
 		SearchBarComponent,
 		LocationsComponent,
 		LocationDataComponent,
-  SettingsComponent,
-  NonexistantComponent,
+		SettingsComponent,
+		NonexistantComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		FormsModule
 	],
-	providers: [],
+	providers: [WeatherService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,11 +5,12 @@ import data from './data.json';
 })
 export class WeatherService {
 	constructor() { }
-
 	public isMetric: string = 'true'
-	changeMeasurement() {
-		this.isMetric ? console.log(this.isMetric) : console.log(this.isMetric)
-		return ''
+	KEY = 'isMetric'
+
+	changeMeasurement(measurement: string) {
+		this.isMetric = measurement
+		localStorage.setItem(this.KEY, this.isMetric)
 	}
 
 	getWeather() {
