@@ -20,7 +20,7 @@ export class LocationDataComponent {
 		const MEASURE_KEY = this.weatherService.KEY
 
 		if (!this.isMetric) {
-			return temp * 1
+			return ((temp * 1.8) + 32)
 		} else {
 			return temp
 		}

@@ -5,7 +5,9 @@
 			<section class="time">{{dateConverter(location.location.localtime_epoch)}}</section>
 		</section>
 
-		<section>{{convertToF(location.current.temp_c)}}<span *ngIf="isMetric">&#8451;</span></section>
+		<section>{{convertToF(location.current.temp_c)}}<span *ngIf="isMetric">&#8451;</span>
+			<span *ngIf="!isMetric">&#8457;</span>
+		</section>
 	</div>
 
 	<div>
