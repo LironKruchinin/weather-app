@@ -13,10 +13,8 @@ export class LocationDataComponent {
 	isMetric = localStorage.getItem(this.weatherService.KEY)
 	timeConverter(timeStamp: string) {
 		const data = timeStamp.split(' ')
-		console.log(data[1].slice(0, 2))
 
 		if (!localStorage.getItem(this.weatherService.KEY)) {
-			console.log(this.weatherService.isMetric);
 
 			let hours: number | string = +data[1].slice(0, 2)
 
