@@ -4,7 +4,7 @@
 	.area {
 
 		&.cloudy {
-			background-image: url(https://e0.pxfuel.com/wallpapers/244/316/desktop-wallpaper-dark-cloudy-sky-and-background-dark-stormy-sky-thumbnail.jpg);
+			background-image: url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg);
 		}
 
 		&.rain {
@@ -12,30 +12,47 @@
 		}
 
 		&.clear {
-			background-image: url(https://c1.wallpaperflare.com/preview/232/993/172/sky-blue-nature-weather.jpg);
+			background-image: url(https://wallpapers.com/images/hd/clear-plain-blue-sky-mnrffn2t80n0jk6h.jpg);
 		}
 
-		// background-color: rgb(255, 51, 0);
+		&.thunder {
+			background-image: url(https://i2-prod.mirror.co.uk/incoming/article24336654.ece/ALTERNATES/s1200c/0_Weather-at-Farthing-Common-lightning-thunder-storm.jpg);
+			background-position-y: -90px;
+			background-position-x: -90px;
+		}
+
+
+		.favorite {
+			opacity: 0;
+		}
+
+		&:hover>div>.favorite {
+			opacity: 1;
+			transition: opacity .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+
+		// background-repeat: no-repeat;
 		display: flex;
 		flex-direction: column;
 		margin: 10px 0;
 		padding: 10px;
 		border-radius: 15px;
 		color: $clr1;
-		background-image: url(https://c1.wallpaperflare.com/preview/232/993/172/sky-blue-nature-weather.jpg);
-		// background-image: url(https://www.presentationpoint.com/wp-content/uploads/2019/02/dphdwep.gif);
-		// background-image: url(https://e0.pxfuel.com/wallpapers/244/316/desktop-wallpaper-dark-cloudy-sky-and-background-dark-stormy-sky-thumbnail.jpg);
-		// background-repeat: round;
+		background-image: url(https://wallpapers.com/images/hd/clear-plain-blue-sky-mnrffn2t80n0jk6h.jpg);
 		width: 100%;
-
-		.time {
-			margin: 1px -2px;
-		}
 
 		div {
 			display: flex;
 			justify-content: space-between;
 			padding: 6px 2px;
+		}
+	}
+
+	@media (min-width: $normal-breakpoint) {
+		.area {
+			height: 100%;
+			margin: 10px 0 0 0;
+			padding: 25px;
 		}
 	}
 }

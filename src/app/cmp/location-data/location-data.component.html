@@ -1,17 +1,17 @@
-<section [class]="location.current.condition.text" class="area">
+<section [class]="location?.current?.condition?.text" class="area" *ngIf="location?.current?.condition?.text">
 	<div>
 		<section>
-			{{location.location.name}}
-			<!-- {{location.location.localtime}} -->
-			<section class="time">{{timeConverter(location.location.localtime)}}</section>
+			{{location?.location.name}}
+			<section class="time">{{timeConverter(location?.location.localtime)}}</section>
 		</section>
 
-		<section>{{convertToF(location.current.temp_c)}}<span *ngIf="isMetric">&#8451;</span>
+		<section>{{convertToF(location?.current.temp_c)}}<span *ngIf="isMetric">&#8451;</span>
 			<span *ngIf="!isMetric">&#8457;</span>
 		</section>
 	</div>
 	<div>
-		<section class="">{{location.current.condition.text}}</section>
+		<section class="">{{location?.current?.condition?.text}}</section>
+		<span class="favorite">star</span>
 	</div>
 
 </section>
