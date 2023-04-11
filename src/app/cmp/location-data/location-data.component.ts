@@ -26,14 +26,11 @@ export class LocationDataComponent {
 			}
 		} else {
 			return data[1]
-
 		}
-
 	}
-
 	convertToF(temp: number) {
 		if (!this.isMetric) {
-			return ((temp * 1.8) + 32)
+			return (((temp * 1.8) + 32)).toFixed(2)
 		}
 		return temp
 

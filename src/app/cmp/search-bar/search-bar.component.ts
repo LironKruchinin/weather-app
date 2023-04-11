@@ -31,6 +31,10 @@ export class SearchBarComponent {
 	debouncedSearchAPI(data: string) {
 		setTimeout(async () => {
 			this.weatherService.loadingData = this.loading = false
+			if (data === '') {
+				this.weatherService.searchData = {}
+				return ''
+			}
 			this.weatherService.searchData = await this.weatherService.getWeatherData(data)
 			console.log('data', this.weatherService.searchData);
 			return this.weatherService.searchData

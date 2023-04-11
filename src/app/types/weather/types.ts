@@ -1,3 +1,7 @@
+export interface error {
+	error: string | null
+}
+
 export interface data {
 	location: location,
 	current: current,
