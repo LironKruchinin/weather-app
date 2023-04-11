@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import data from './data.json';
+import { error } from '../app/types/weather/types'
 @Injectable({
 	providedIn: 'root'
 })
@@ -8,7 +9,7 @@ export class WeatherService {
 	public isMetric: string = 'true'
 	KEY = 'isMetric'
 	loadingData = false
-	searchData = {}
+	searchData: any = {}
 
 	changeMeasurement(measurement: string) {
 		this.isMetric = measurement
@@ -20,7 +21,6 @@ export class WeatherService {
 	}
 
 	async getWeatherData(location: string) {
-		// console.log(`http://api.weatherapi.com/v1/forecast.json?key=d95d84fed6d34f0c924100153230404&q=${location}&days=7&aqi=no&alerts=no`);
 		try {
 			this.loadingData = true
 			console.log(this.loadingData);

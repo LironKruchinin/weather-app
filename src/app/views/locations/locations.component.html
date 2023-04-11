@@ -1,10 +1,12 @@
-<section>
+<section *ngIf="!weatherService.loadingData" class="new-location">
 	<location-data [location]="weatherService.searchData"></location-data>
-	<!-- {{searchData}} -->
-	<!-- <location-data [location]="searchedData"></location-data> -->
 </section>
 
-<section *ngIf="!weatherService.loadingData">
+<section *ngIf="weatherService.searchData?.error" class="error">
+	Could not get Location
+</section>
+
+<section *ngIf="!weatherService.loadingData" class="locations">
 	<div *ngFor="let location of locations">
 		<location-data [location]="location"></location-data>
 	</div>
