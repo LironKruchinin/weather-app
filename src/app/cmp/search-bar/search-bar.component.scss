@@ -2,4 +2,72 @@
 	input {
 		width: 100%;
 	}
+
+	/* The spinner styles */
+	.spinner {
+		display: inline-block;
+		position: relative;
+		width: 40px;
+		height: 40px;
+	}
+
+	.spinner div {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 40px;
+		height: 40px;
+		border-radius: 40%;
+		background-color: #3498db;
+		animation: spinner-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	}
+
+	/* The animation to rotate the spinner */
+	@keyframes spinner-animation {
+		0% {
+			transform: translate(-25px, 0);
+		}
+
+		25% {
+			transform: translate(0, 0);
+		}
+
+		50% {
+			transform: translate(25px, 0);
+		}
+
+		75% {
+			transform: translate(0, 0);
+		}
+
+		100% {
+			transform: translate(-25px, 0);
+		}
+	}
+
+	/* Each bar's position and animation delay */
+	.bar1 {
+		animation-delay: -0.36s;
+	}
+
+	.bar2 {
+		transform: rotate(72deg);
+		animation-delay: -0.24s;
+	}
+
+	.bar3 {
+		transform: rotate(144deg);
+		animation-delay: -0.12s;
+	}
+
+	.bar4 {
+		transform: rotate(216deg);
+		animation-delay: 0s;
+	}
+
+	.bar5 {
+		transform: rotate(288deg);
+		animation-delay: 0.12s;
+	}
+
 }
