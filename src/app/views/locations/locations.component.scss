@@ -8,7 +8,7 @@
 
 	@media (min-width: $normal-breakpoint) {
 		.locations {
-			// background-color: lightcoral;
+			background-color: lightcoral;
 			display: grid;
 			grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
 			gap: 10px;

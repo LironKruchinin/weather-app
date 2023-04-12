@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import data from './data.json';
 import { error } from '../app/types/weather/types'
+import { WEATHER_KEY } from './api.key';
 @Injectable({
 	providedIn: 'root'
 })
@@ -25,7 +26,7 @@ export class WeatherService {
 			this.loadingData = true
 			console.log(this.loadingData);
 
-			const answer = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=d95d84fed6d34f0c924100153230404&q=${location}&days=7&aqi=no&alerts=no`)
+			const answer = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_KEY}&q=${location}&days=7&aqi=no&alerts=no`)
 			const data = await answer.json()
 			this.loadingData = false
 			this.searchData = data
