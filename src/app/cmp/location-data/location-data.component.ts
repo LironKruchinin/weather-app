@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { WeatherService } from '../../../services/weather.service.service'
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
 	selector: 'location-data',
@@ -7,7 +10,9 @@ import { WeatherService } from '../../../services/weather.service.service'
 	styleUrls: ['./location-data.component.scss']
 })
 export class LocationDataComponent {
-	constructor(private weatherService: WeatherService) { }
+	constructor(
+		private weatherService: WeatherService,
+		private route: ActivatedRoute) { }
 	@Input() location: any | undefined
 
 	isMetric = localStorage.getItem(this.weatherService.KEY)
@@ -33,6 +38,16 @@ export class LocationDataComponent {
 			return (((temp * 1.8) + 32)).toFixed(2)
 		}
 		return temp
+
+	}
+
+	browseLocation(location: string) {
+		// this.router.navigate(['items'], { relativeTo: this.route })
+
+	}
+
+	addLocation() {
+		console.log('stared');
 
 	}
 

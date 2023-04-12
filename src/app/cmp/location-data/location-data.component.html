@@ -1,4 +1,5 @@
-<section [class]="location?.current?.condition?.text" class="area" *ngIf="location?.current?.condition?.text">
+<section [class]="location?.current?.condition?.text" class="area" *ngIf="location?.current?.condition?.text"
+	[routerLink]="['/location', location?.location.name]" [title]="location?.location.name">
 	<div>
 		<section>
 			{{location?.location.name}}
@@ -11,7 +12,7 @@
 	</div>
 	<div>
 		<section class="">{{location?.current?.condition?.text}}</section>
-		<span class="favorite">star</span>
+		<span class="favorite" (click)="addLocation()">star</span>
 	</div>
 
 </section>

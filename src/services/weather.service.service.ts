@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import data from './data.json';
 import { error } from '../app/types/weather/types'
 import { WEATHER_KEY } from './api.key';
+
 @Injectable({
 	providedIn: 'root'
 })
