@@ -1,1 +1,0 @@
-export const WEATHER_KEY = 'd95d84fed6d34f0c924100153230404'
