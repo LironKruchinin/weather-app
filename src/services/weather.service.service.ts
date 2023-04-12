@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import data from './data.json';
-import { error } from '../app/types/weather/types'
+import locationsData from './data.json';
+import { data, error } from '../app/types/weather/types'
 import { WEATHER_KEY } from './api.key';
 
 @Injectable({
@@ -10,6 +10,7 @@ export class WeatherService {
 	constructor() { }
 	public isMetric: string = 'true'
 	KEY = 'isMetric'
+	LOCATIONS = 'locationStorage'
 	loadingData = false
 	searchData: any = {}
 
@@ -19,7 +20,8 @@ export class WeatherService {
 	}
 
 	getWeather() {
-		return data
+		const locations = JSON.parse(localStorage.getItem(this.LOCATIONS) || "[]")
+		return locations
 	}
 
 	async getWeatherData(location: string) {
@@ -38,6 +40,14 @@ export class WeatherService {
 			this.loadingData = false
 			return 'Error loading data'
 		}
+	}
+
+	saveLocation(location: any) {
+
+		let locations = JSON.parse(localStorage.getItem(this.LOCATIONS) || "[]")
+
+		locations.push(location)
+		localStorage.setItem(this.LOCATIONS, JSON.stringify(locations))
 	}
 
 }

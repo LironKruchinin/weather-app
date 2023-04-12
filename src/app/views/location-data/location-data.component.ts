@@ -9,16 +9,15 @@ import { location } from 'src/app/types/weather/types';
 	styleUrls: ['./location-data.component.scss']
 })
 export class LocationDataComponent {
-
+	locationName: string | null = ''
 	location$: Observable<location>
 	constructor(
-		private route: ActivatedRoute,
-		private router: Router
-	) { }
+		private route: ActivatedRoute) { }
 
 	ngOnInit() {
-		const location = this.route.snapshot.paramMap.get('location')
-		console.log(location);
+		this.route.paramMap.subscribe((params: ParamMap) => {
+			this.locationName = params.get('locationName')
 
+		})
 	}
 }
