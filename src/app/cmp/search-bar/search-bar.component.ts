@@ -36,7 +36,7 @@ export class SearchBarComponent {
 				return ''
 			}
 			this.weatherService.searchData = await this.weatherService.getWeatherData(data)
-			console.log('data', this.weatherService.searchData);
+			// console.log('data', this.weatherService.searchData);
 			return this.weatherService.searchData
 
 		}, 1000)

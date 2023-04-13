@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import locationsData from './data.json';
-import { data, error } from '../app/types/weather/types'
 import { WEATHER_KEY } from './api.key';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -10,7 +9,7 @@ export class WeatherService {
 	constructor() { }
 	public isMetric: string = 'true'
 	KEY = 'isMetric'
-	LOCATIONS = 'locationStorage'
+	LOCATIONS_KEY = 'locationStorage'
 	loadingData = false
 	searchData: any = {}
 
@@ -20,15 +19,22 @@ export class WeatherService {
 	}
 
 	getWeather() {
-		const locations = JSON.parse(localStorage.getItem(this.LOCATIONS) || "[]")
+		const locations = JSON.parse(localStorage.getItem(this.LOCATIONS_KEY) || "[]")
 		return locations
 	}
 
-	async getWeatherData(location: string) {
+	async getLocation(location: string | null) {
+		const locations = JSON.parse(localStorage.getItem(this.LOCATIONS_KEY) || "[]")
+
+		if (!locations.find((l: any) => l.location.name === location)) {
+			const answer = await this.getWeatherData(location)
+			return answer
+		} else return locations.find((l: any) => l.location.name === location)
+	}
+
+	async getWeatherData(location: string | null) {
 		try {
 			this.loadingData = true
-			console.log(this.loadingData);
-
 			const answer = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_KEY}&q=${location}&days=7&aqi=no&alerts=no`)
 			const data = await answer.json()
 			this.loadingData = false
@@ -43,11 +49,17 @@ export class WeatherService {
 	}
 
 	saveLocation(location: any) {
+		let locations = JSON.parse(localStorage.getItem(this.LOCATIONS_KEY) || "[]")
+		let locationActive = locations.findIndex((l: any) => l.location.name === location?.location?.name)
 
-		let locations = JSON.parse(localStorage.getItem(this.LOCATIONS) || "[]")
+		if (locationActive === -1) {
+			locations.push(location)
+			localStorage.setItem(this.LOCATIONS_KEY, JSON.stringify(locations))
+		} else {
+			locations.splice(locationActive, 1)
+			localStorage.setItem(this.LOCATIONS_KEY, JSON.stringify(locations))
+		}
 
-		locations.push(location)
-		localStorage.setItem(this.LOCATIONS, JSON.stringify(locations))
 	}
 
 }

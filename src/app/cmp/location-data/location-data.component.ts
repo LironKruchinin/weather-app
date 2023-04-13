@@ -1,11 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { WeatherService } from '../../../services/weather.service.service'
+import { data } from 'src/app/types/weather/types';
 
 @Component({
 	selector: 'location-data',
 	templateUrl: './location-data.component.html',
 	styleUrls: ['./location-data.component.scss']
 })
+
 export class LocationDataComponent {
 	constructor(
 		private weatherService: WeatherService) { }
@@ -35,11 +37,9 @@ export class LocationDataComponent {
 		return temp
 	}
 
-	addLocation(ev: Event) {
-		ev?.stopPropagation()
-		console.log('stared')
-
-		this.weatherService.saveLocation(this.weatherService.searchData)
+	addLocation(ev: Event, location: data) {
+		ev.stopPropagation()
+		this.weatherService.saveLocation(location)
 	}
 
 }
