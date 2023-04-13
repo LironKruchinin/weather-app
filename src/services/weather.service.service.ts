@@ -59,9 +59,7 @@ export class WeatherService {
 			locations.splice(locationActive, 1)
 			localStorage.setItem(this.LOCATIONS_KEY, JSON.stringify(locations))
 		}
-
 	}
-
 }
 
 

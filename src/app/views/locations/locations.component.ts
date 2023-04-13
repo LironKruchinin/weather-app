@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { current, data } from 'src/app/types/weather/types';
+import { data } from 'src/app/types/weather/types';
 import { WeatherService } from 'src/services/weather.service.service';
 
 @Component({
@@ -12,4 +12,9 @@ export class LocationsComponent {
 	@Input() locations: data[] | undefined
 	isLoading = this.weatherService.loadingData
 	searchedData = this.weatherService.searchData
+
+
+	trackByFn(index: number, location: any) {
+		return location.name;
+	}
 }

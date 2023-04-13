@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { data, location, current, forecast } from 'src/app/types/weather/types';
+// import { data, location, current, forecast } from 'src/app/types/weather/types';
 import { WeatherService } from '../../../services/weather.service.service';
 
 @Component({

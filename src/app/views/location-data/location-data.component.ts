@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { data, location } from 'src/app/types/weather/types';
 import { WeatherService } from 'src/services/weather.service.service';
@@ -22,8 +22,7 @@ export class LocationDataComponent {
 			this.locationName = params.get('locationName')
 		})
 		this.locationData = await this.weatherService.getLocation(this.locationName)
-		console.log('fetched data', this.locationData);
-
-
+		console.log('fetched data', this.locationData)
 	}
+
 }

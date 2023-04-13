@@ -41,5 +41,4 @@ export class LocationDataComponent {
 		ev.stopPropagation()
 		this.weatherService.saveLocation(location)
 	}
-
 }
