@@ -71,7 +71,7 @@ export class WeatherService {
 	}
 
 	updateLocations() {
-		localStorage.setItem('locationStorage', JSON.stringify(this.locations));
+		localStorage.setItem(this.LOCATIONS_KEY, JSON.stringify(this.locations));
 		// Trigger Angular change detection manually
 		// You can import ChangeDetectorRef and inject it in the constructor to use it here
 		// this.changeDetectorRef.detectChanges();
