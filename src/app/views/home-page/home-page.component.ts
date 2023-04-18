@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { WeatherService } from '../../../services/weather.service.service';
+import { Component } from '@angular/core'
+import { WeatherService } from '../../../services/weather.service.service'
 
 @Component({
 	selector: 'home-page',
@@ -15,25 +15,31 @@ export class HomePageComponent {
 	locations: any | undefined
 	isMetric: string | boolean | null = 'true'
 
-	ngOnInit() {
+	async ngOnInit() {
 		this.locations = this.weatherService.getWeather()
 		this.isMetric = localStorage.getItem(this.weatherService.KEY)
 		this.checkTimeStamp()
+
+
 	}
 
-	checkTimeStamp() {
-		// const hour = 3600000
-		const hour = 360
-		this.locations.map(async (location: any) => {
-			if (Date.now() - location.timeStamp > hour) {
-				console.log(location.location.name)
+	async checkTimeStamp() {
+		const hour = 3600000
+		const newLocations = await Promise.all(
+			this.locations.map(async (location: any) => {
+				if (Date.now() - location.timeStamp > hour) {
+					const newLocationData = await this.weatherService.getWeatherData(location.location.name)
+					let newLocation = { ...newLocationData, timeStamp: Date.now() }
+					return newLocation
+				} else {
+					return location
+				}
+			})
+		)
 
-				// const newLocationData = await this.weatherService.getWeatherData(location.location.name)
-				// console.log(newLocationData);
-
-			}
-
-		})
+		localStorage.setItem(this.weatherService.LOCATIONS_KEY, JSON.stringify(newLocations))
+		return newLocations
 	}
+
 
 }
