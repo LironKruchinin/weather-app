@@ -3,6 +3,7 @@ export interface error {
 }
 
 export interface data {
+	timeStamp?: number
 	location: location,
 	current: current,
 	forecast: forecast

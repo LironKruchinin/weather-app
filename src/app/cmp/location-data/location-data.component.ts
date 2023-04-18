@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnDestroy } from '@angular/core'
 import { WeatherService } from '../../../services/weather.service.service'
-import { data } from 'src/app/types/weather/types';
+import { data } from 'src/app/types/weather/types'
+import { Observable, Subject, Subscription } from 'rxjs'
 
 @Component({
 	selector: 'location-data',
@@ -8,12 +9,30 @@ import { data } from 'src/app/types/weather/types';
 	styleUrls: ['./location-data.component.scss']
 })
 
-export class LocationDataComponent {
-	constructor(
-		private weatherService: WeatherService) { }
-	@Input() location: any | undefined
+export class LocationDataComponent implements OnDestroy {
+	constructor(private weatherService: WeatherService,
+		private cdr: ChangeDetectorRef) { }
 
+	@Input() location: any | undefined
 	isMetric = localStorage.getItem(this.weatherService.KEY)
+	private storageChangeSubject: Subject<void> = new Subject<void>()
+	private storageChange$: Observable<void> = this.storageChangeSubject.asObservable()
+	private storageChangeSubscription: Subscription | undefined
+
+	ngOnInit() {
+		// Subscribe to storage change observable and store the Subscription object
+		this.storageChangeSubscription = this.storageChange$.subscribe(() => {
+			this.onLocalStorageChange()
+		})
+	}
+
+	ngOnDestroy() {
+		// Unsubscribe from storage change observable
+		if (this.storageChangeSubscription) {
+			this.storageChangeSubscription.unsubscribe()
+		}
+	}
+
 	timeConverter(timeStamp: string) {
 		const data = timeStamp.split(' ')
 
@@ -30,15 +49,21 @@ export class LocationDataComponent {
 			return data[1]
 		}
 	}
+
 	convertToF(temp: number) {
-		if (!this.isMetric) {
-			return (((temp * 1.8) + 32)).toFixed(2)
-		}
 		return temp
 	}
 
 	addLocation(ev: Event, location: data) {
 		ev.stopPropagation()
 		this.weatherService.saveLocation(location)
+	}
+
+	onLocalStorageChange() {
+		// Update the location property of the component
+		this.location = JSON.parse(localStorage.getItem('locationData') || '{}')
+
+		// Trigger change detection to update the template
+		this.cdr.detectChanges()
 	}
 }

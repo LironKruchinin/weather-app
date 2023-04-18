@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { data } from 'src/app/types/weather/types';
 import { WeatherService } from 'src/services/weather.service.service';
 
@@ -7,14 +7,23 @@ import { WeatherService } from 'src/services/weather.service.service';
 	templateUrl: './locations.component.html',
 	styleUrls: ['./locations.component.scss']
 })
-export class LocationsComponent {
+export class LocationsComponent implements OnInit {
 	constructor(public weatherService: WeatherService) { }
-	@Input() locations: data[] | undefined
+	@Input() locations: any | undefined
 	isLoading = this.weatherService.loadingData
 	searchedData = this.weatherService.searchData
 
-
-	trackByFn(index: number, location: any) {
-		return location.name;
+	ngOnInit() {
+		// Get locations data from localStorage
+		const storedLocations = localStorage.getItem('locationStorage');
+		if (storedLocations) {
+			this.locations = JSON.parse(storedLocations);
+		}
 	}
+
+	trackByFn(index: number, location: data) {
+		return location.location.name; // Use a unique property from the location object
+	}
+
+	// Update locations data in localStorage and trigger change detection
 }

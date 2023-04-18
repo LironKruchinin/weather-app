@@ -6,13 +6,8 @@
 	Could not get Location
 </section>
 
-<!-- <section *ngIf="!weatherService.loadingData" class="locations">
-	<div *ngFor="let location of locations; trackBy:location">
-		<location-data [location]="location"></location-data>
-	</div>
-</section> -->
 <section *ngIf="!weatherService.loadingData" class="locations">
-	<div *ngFor="let location of locations; trackBy:trackByFn">
+	<div *ngFor="let location of locations; trackBy: trackByFn">
 		<location-data [location]="location"></location-data>
 	</div>
 </section>
