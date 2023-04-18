@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-// import { data, location, current, forecast } from 'src/app/types/weather/types';
 import { WeatherService } from '../../../services/weather.service.service';
 
 @Component({
@@ -13,12 +12,28 @@ export class HomePageComponent {
 	constructor(private weatherService: WeatherService) { }
 
 	username: Event | undefined
-	testLocation: any | undefined
+	locations: any | undefined
 	isMetric: string | boolean | null = 'true'
 
 	ngOnInit() {
-		this.testLocation = this.weatherService.getWeather()
+		this.locations = this.weatherService.getWeather()
 		this.isMetric = localStorage.getItem(this.weatherService.KEY)
+		this.checkTimeStamp()
+	}
+
+	checkTimeStamp() {
+		// const hour = 3600000
+		const hour = 360
+		this.locations.map(async (location: any) => {
+			if (Date.now() - location.timeStamp > hour) {
+				console.log(location.location.name)
+
+				// const newLocationData = await this.weatherService.getWeatherData(location.location.name)
+				// console.log(newLocationData);
+
+			}
+
+		})
 	}
 
 }

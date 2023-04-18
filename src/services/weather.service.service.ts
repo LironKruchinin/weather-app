@@ -53,7 +53,8 @@ export class WeatherService {
 		let locationActive = locations.findIndex((l: any) => l.location.name === location?.location?.name)
 
 		if (locationActive === -1) {
-			locations.push(location)
+			let newLocation = { ...location, timeStamp: Date.now() }
+			locations.push(newLocation)
 			localStorage.setItem(this.LOCATIONS_KEY, JSON.stringify(locations))
 		} else {
 			locations.splice(locationActive, 1)
