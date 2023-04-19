@@ -5,11 +5,11 @@ import { data, location } from 'src/app/types/weather/types';
 import { WeatherService } from 'src/services/weather.service.service';
 
 @Component({
-	selector: 'location-data',
+	selector: 'location-details',
 	templateUrl: './location-data.component.html',
-	styleUrls: ['./location-data.component.scss']
+	styleUrls: ['./location-data.component.scss'],
 })
-export class LocationDataComponent {
+export class LocationDetailsComponent {
 	locationName: string | null = ''
 	locationData: Array<data> | null = []
 	location$: Observable<location>
@@ -24,5 +24,4 @@ export class LocationDataComponent {
 		this.locationData = await this.weatherService.getLocation(this.locationName)
 		console.log('fetched data', this.locationData)
 	}
-
 }

@@ -11,8 +11,10 @@ import { HeaderComponent } from './cmp/header/header.component';
 import { SearchBarComponent } from './cmp/search-bar/search-bar.component';
 import { LocationsComponent } from './views/locations/locations.component';
 import { LocationDataComponent } from './cmp/location-data/location-data.component';
+import { LocationDetailsComponent } from './views/location-data/location-data.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import { NonexistantComponent } from './views/nonexistant/nonexistant.component';
+import { WeatherDisplayComponent } from './cmp/location-details/weather-display/weather-display.component'
 
 @NgModule({
 	declarations: [
@@ -22,8 +24,10 @@ import { NonexistantComponent } from './views/nonexistant/nonexistant.component'
 		SearchBarComponent,
 		LocationsComponent,
 		LocationDataComponent,
+		LocationDetailsComponent,
 		SettingsComponent,
 		NonexistantComponent,
+		WeatherDisplayComponent
 	],
 	imports: [
 		BrowserModule,
@@ -31,6 +35,6 @@ import { NonexistantComponent } from './views/nonexistant/nonexistant.component'
 		FormsModule
 	],
 	providers: [WeatherService],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
 })
 export class AppModule { }

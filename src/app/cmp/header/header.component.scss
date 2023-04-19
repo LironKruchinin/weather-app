@@ -8,9 +8,16 @@
 		ul {
 			display: flex;
 			margin: 0;
+			justify-content: space-between;
+			margin: 0 15px;
 
 			li {
 				padding: 16px 0;
+
+				a {
+					height: 100%;
+					padding: 16px 0;
+				}
 
 			}
 		}
