@@ -20,14 +20,12 @@ export class LocationDataComponent implements OnDestroy {
 	private storageChangeSubscription: Subscription | undefined
 
 	ngOnInit() {
-		// Subscribe to storage change observable and store the Subscription object
 		this.storageChangeSubscription = this.storageChange$.subscribe(() => {
 			this.onLocalStorageChange()
 		})
 	}
 
 	ngOnDestroy() {
-		// Unsubscribe from storage change observable
 		if (this.storageChangeSubscription) {
 			this.storageChangeSubscription.unsubscribe()
 		}
@@ -60,10 +58,7 @@ export class LocationDataComponent implements OnDestroy {
 	}
 
 	onLocalStorageChange() {
-		// Update the location property of the component
 		this.location = JSON.parse(localStorage.getItem('locationData') || '{}')
-
-		// Trigger change detection to update the template
 		this.cdr.detectChanges()
 	}
 }

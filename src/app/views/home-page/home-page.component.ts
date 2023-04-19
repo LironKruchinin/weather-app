@@ -24,7 +24,6 @@ export class HomePageComponent {
 		this.cdr.detectChanges()
 		console.log(this.locations)
 
-		// Add storage event listener
 		window.addEventListener('storage', this.onLocalStorageChange.bind(this))
 	}
 
@@ -43,7 +42,6 @@ export class HomePageComponent {
 		)
 
 		localStorage.setItem(this.weatherService.LOCATIONS_KEY, JSON.stringify(newLocations))
-		// Update the locations array and trigger change detection
 		this.locations = newLocations
 		this.cdr.detectChanges()
 		return newLocations
@@ -58,7 +56,6 @@ export class HomePageComponent {
 	@HostListener('window:storage', ['$event'])
 	onLocalStorageChange(event: StorageEvent) {
 		if (event.key === this.weatherService.LOCATIONS_KEY) {
-			// Trigger change detection
 			this.cdr.detectChanges()
 			console.log('LocalStorage key changed:', event.key, 'New value:', event.newValue)
 		}

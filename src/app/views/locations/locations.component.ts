@@ -14,7 +14,6 @@ export class LocationsComponent implements OnInit {
 	searchedData = this.weatherService.searchData
 
 	ngOnInit() {
-		// Get locations data from localStorage
 		const storedLocations = localStorage.getItem('locationStorage');
 		if (storedLocations) {
 			this.locations = JSON.parse(storedLocations);
@@ -25,5 +24,4 @@ export class LocationsComponent implements OnInit {
 		return location.location.name; // Use a unique property from the location object
 	}
 
-	// Update locations data in localStorage and trigger change detection
 }
