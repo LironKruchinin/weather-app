@@ -22,6 +22,5 @@ export class LocationDetailsComponent {
 			this.locationName = params.get('locationName')
 		})
 		this.locationData = await this.weatherService.getLocation(this.locationName)
-		// console.log('fetched data', this.locationData)
 	}
 }
