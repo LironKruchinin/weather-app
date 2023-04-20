@@ -1,3 +1,6 @@
 <section *ngFor="let weather of weatherData">
-	{{weather}}
+	{{weatherDisplay(weather)}}
+	{{this.weatherService.isMetric}}
+
 </section>
+<!-- {{weatherDisplay()}} -->

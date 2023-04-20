@@ -49,12 +49,12 @@ export interface current {
 export interface forecast {
 	forecastday: forecastday
 }
-interface forecastday {
+export interface forecastday {
 	date: string,
 	date_epoch: number,
 	day: day,
 	astro: astro,
-	hour: hour
+	hour: hour[]
 }
 
 interface condition {
