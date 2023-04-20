@@ -2,9 +2,9 @@
 	{{getWeatherWithHour(weather)}}
 	<!-- {{weather | json}} -->
 	<section *ngFor="let hour of restOfDayWeather" class="degree">
-		<div *ngIf="isMetric">
-			{{hour.temp_c}}&#8451;
-			{{hour.time.split(' ')[1]}}
+		<div *ngIf="isMetric" style="display: flex; flex-direction: column;">
+			<span>{{hour.temp_c.toFixed(1)}}&#8451;</span>
+			<span>{{hour.time.split(' ')[1]}}</span>
 		</div>
 		<div *ngIf="!isMetric">{{hour.temp_f}}
 			&#8457;

@@ -1,12 +1,13 @@
 :host {
 	display: flex;
 	padding-bottom: 5px;
-	overflow-x: scroll;
+	overflow-x: auto;
 	margin: 0 15px;
 
 	.degrees-section {
 		display: flex;
 		gap: 10px;
 		margin-right: 5px;
+		text-align: center;
 	}
 }

@@ -17,10 +17,14 @@ export class WeatherDisplayComponent {
 	getWeatherWithHour(weather: forecastday) {
 
 		const hour: number = this.fetchedData.current.last_updated.split(' ')[1].slice(0, 2)
-		console.log(this.weatherService.isMetric);
+		const currDate: string = this.fetchedData.current.last_updated.split(' ')[0].slice(-2)
 
-		console.log(weather.hour.slice(hour));
-		this.restOfDayWeather = weather.hour.slice(hour)
-		// return weather.hour.slice(hour)
+		for (let w in weather.hour) {
+			if (weather.hour[w].time.split(' ')[0].slice(-2) > currDate) {
+				this.restOfDayWeather = weather.hour
+			} else {
+				this.restOfDayWeather = weather.hour.slice(hour)
+			}
+		}
 	}
 }
