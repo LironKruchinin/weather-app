@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { data, location } from 'src/app/types/weather/types';
@@ -13,6 +13,7 @@ export class LocationDetailsComponent {
 	locationName: string | null = ''
 	locationData: any | null = []
 	location$: Observable<location>
+	weatherLength: number
 	constructor(
 		private weatherService: WeatherService,
 		private route: ActivatedRoute) { }
@@ -22,5 +23,10 @@ export class LocationDetailsComponent {
 			this.locationName = params.get('locationName')
 		})
 		this.locationData = await this.weatherService.getLocation(this.locationName)
+	}
+
+	getWeatherLength(length: number) {
+		console.log('length', length);
+		this.weatherLength = length
 	}
 }

@@ -1,4 +1,5 @@
 :host {
+
 	display: flex;
 	padding-bottom: 5px;
 	overflow-x: auto;
@@ -10,4 +11,8 @@
 		margin-right: 5px;
 		text-align: center;
 	}
+}
+
+:host.center {
+	justify-content: center;
 }

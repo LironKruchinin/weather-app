@@ -1,2 +1,3 @@
 <p>location-data works! aaaaa {{locationName}}</p>
-<weather-display [fetchedData]="locationData" [weatherData]="locationData.forecast?.forecastday"></weather-display>
+<weather-display [fetchedData]="locationData" [weatherData]="locationData.forecast?.forecastday"
+	(weatherLength)="getWeatherLength($event)" [ngClass]="weatherLength < 4 ? 'center' : ''"></weather-display>

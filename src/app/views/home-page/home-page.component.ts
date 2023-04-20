@@ -28,7 +28,7 @@ export class HomePageComponent {
 	}
 
 	async checkTimeStamp() {
-		const hour = 3600000
+		const hour = 360000
 		const newLocations = await Promise.all(
 			this.locations.map(async (location: any) => {
 				if (Date.now() - location.timeStamp > hour) {
