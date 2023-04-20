@@ -11,7 +11,7 @@ import { WeatherService } from 'src/services/weather.service.service';
 })
 export class LocationDetailsComponent {
 	locationName: string | null = ''
-	locationData: Array<data> | null = []
+	locationData: any | null = []
 	location$: Observable<location>
 	constructor(
 		private weatherService: WeatherService,
