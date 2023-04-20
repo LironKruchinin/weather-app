@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { forecastday } from '../../../types/weather/types'
+import { forecastday, hour } from '../../../types/weather/types'
 import { WeatherService } from 'src/services/weather.service.service';
 @Component({
 	selector: 'weather-display',
@@ -10,11 +10,17 @@ export class WeatherDisplayComponent {
 	constructor(public weatherService: WeatherService) { }
 
 	@Input() weatherData: any | null
+	@Input() fetchedData: any | null
+	isMetric = localStorage.getItem(this.weatherService.KEY)
+	restOfDayWeather: hour[]
 
-	weatherDisplay(weather: forecastday) {
-		const hour = new Date().getHours()
+	getWeatherWithHour(weather: forecastday) {
 
-		console.log('weather', weather.hour.slice(hour))
-		return weather.hour.slice(hour)
+		const hour: number = this.fetchedData.current.last_updated.split(' ')[1].slice(0, 2)
+		console.log(this.weatherService.isMetric);
+
+		console.log(weather.hour.slice(hour));
+		this.restOfDayWeather = weather.hour.slice(hour)
+		// return weather.hour.slice(hour)
 	}
 }

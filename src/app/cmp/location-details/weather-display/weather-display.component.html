@@ -1,6 +1,9 @@
-<section *ngFor="let weather of weatherData">
-	{{weatherDisplay(weather)}}
-	{{this.weatherService.isMetric}}
-
+<section *ngFor="let weather of weatherData" class="degrees-section">
+	{{getWeatherWithHour(weather)}}
+	<!-- {{weather | json}} -->
+	<section *ngFor="let hour of restOfDayWeather">
+		<div *ngIf="isMetric">{{hour.temp_c}}&#8451;</div>
+		<div *ngIf="!isMetric">{{hour.temp_f}}&#8457;</div>
+	</section>
+	<!-- {{this.weatherService.isMetric}} -->
 </section>
-<!-- {{weatherDisplay()}} -->
